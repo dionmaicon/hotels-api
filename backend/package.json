@@ -1,0 +1,26 @@
+{
+  "name": "backend_default",
+  "version": "1.0.0",
+  "description": "Default Node + MongoDB API",
+  "author": "Dion Maicon E. Duarte <dionmaicon@outlook.com>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "NODE_ENV=development nodemon -L server.js",
+    "start-gendoc": "node ./swagger.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.5",
+    "mongoose-long": "^0.4.0",
+    "mongoose-paginate-v2": "^1.4.1",
+    "swagger-autogen": "^2.11.1",
+    "swagger-ui-express": "^4.1.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}

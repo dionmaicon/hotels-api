@@ -1,0 +1,4 @@
+{
+    "migrations-dir" : "./src/database/migrations",
+    "dbConnectionUri": "mongodb://mongo:27017/hotels_api"
+}
