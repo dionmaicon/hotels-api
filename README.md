@@ -1,4 +1,4 @@
-# hotel-Offers
+# Hotel API
 
 Hotel Offers Backend
 
@@ -6,22 +6,17 @@ Node.js, Express.js, MongoDB, Mongo Express, Docker e Swagger
 
 ## Install
 
-git clone https://dionmaicon@bitbucket.org/dionmaicon/hotel-offers.git
+git clone https://github.com/dionmaicon/hotels-api.git
 
 Requirements:
 - docker-compose
 
-After clone this repository, install dependencies in backend folder
-``` bash
-cd hotel-offers/backend && npm install
-```
-
-Go back to root folder and run docker-compose
+After clone this repository, copy the `.env.development` to `.env` and run:
 ``` bash
 docker-compose up
 ```
 
-## Migrate / Seed
+## Seed
 
 To seed database run up. (Seeders).
 
