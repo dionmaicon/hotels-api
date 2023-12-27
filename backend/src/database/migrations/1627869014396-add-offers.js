@@ -1,5 +1,4 @@
-const startDB = require("../../boot/database.js");
-const { HotelOffer } = require("../../models/HotelOffer.js");
+import { Offer } from "../../models/Offer.js";
 
 /**
  * Make any changes you need to make to the database here
@@ -7,11 +6,6 @@ const { HotelOffer } = require("../../models/HotelOffer.js");
 async function up() {
 
   // Write migration here
-  await startDB({
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  });
-
   const offers = [];
 
   for (let index = 1; index < 5; index++) {
@@ -25,7 +19,7 @@ async function up() {
     }
 
     offers.push({
-      type: "hotel-offer",
+      type: "reservation",
       checkInDate: formatDate(inDate),
       checkOutDate: formatDate(outDate),
       roomQuantity: index,
@@ -40,7 +34,7 @@ async function up() {
   try {
 
     for (const offer of offers) {
-      await HotelOffer.create(offer);
+      await Offer.create(offer);
     }
 
   } catch (e) {
@@ -54,13 +48,8 @@ async function up() {
 async function down() {
 
   // Write migration here
-  await startDB({
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  });
-
-  await HotelOffer.deleteMany({});
+  await Offer.deleteMany({});
 
 }
 
-module.exports = { up, down };
+export { up, down };

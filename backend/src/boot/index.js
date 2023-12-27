@@ -1,5 +1,5 @@
-const startDB = require("./database.js");
-const swaggerService = require("./swaggerService.js");
+import startDB from "./database.js";
+import swaggerService from "./swaggerService.js";
 
 const boot = (app) => {
     
@@ -13,4 +13,4 @@ const boot = (app) => {
     swaggerService(app);
 };
 
-module.exports = boot;
+export default boot;

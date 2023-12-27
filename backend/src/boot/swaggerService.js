@@ -1,8 +1,8 @@
-const swaggerUi = require('swagger-ui-express')
-const swaggerFile = require('../../swagger_output.json')
+import { serve, setup } from 'swagger-ui-express';
+import swaggerFile from '../../swagger_output.json' assert { type: "json" };
 
 const swagger = (app) => {
-    app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+    app.use('/doc', serve, setup(swaggerFile))
 }
 
-module.exports = swagger;
+export default swagger;

@@ -1,19 +1,25 @@
-const startDB = require("../../boot/database.js");
-const { Hotel } = require("../../models/Hotel.js");
-
+import { Hotel } from "../../models/Hotel.js";
 /**
  * Make any changes you need to make to the database here
  */
 async function up () {
-  
   // Write migration here
-  await startDB({
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  });
-
   const hotels = [];
   const countries =  [ 'BR', 'ES', 'IT', 'PT' ];
+  const langMap = (country) => {
+    switch (country) {
+      case 'BR':
+        return 'pt-BR';
+      case 'ES':
+        return 'es-ES';
+      case 'IT':
+        return 'it-IT';
+      case 'PT':
+        return 'pt-PT';
+      default:
+        return 'en-US';
+    }
+  }
 
   for (let index = 1; index < 5; index++) {
     hotels.push({
@@ -22,15 +28,15 @@ async function up () {
       name: `AWESOME HOTEL ${ countries[index - 1] }`,
       rating: "" + index,
       description: {
-        lang: 'BR',
-        text: "Um grande hotel"
+        lang: langMap(countries[index - 1]),
+        text: "Awesome hotel description"
       },
       location: {
         type: "Point",
         coordinates: [ -168, 54]
       },
       address: {
-        cityName: `City C${index}`,
+        cityName: `City ${index}`,
         countryCode: countries[index - 1]
       }
     })    
@@ -52,13 +58,9 @@ async function up () {
  */
 async function down () {
   // Write migration here
-  await startDB({
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  });
-
+  
   await Hotel.deleteMany({});
 
 }
 
-module.exports = { up, down };
+export { up, down };

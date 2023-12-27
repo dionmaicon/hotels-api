@@ -1,7 +1,7 @@
-version: '3'
+version: '3.7'
 services:
   mongo:
-    image: mongo
+    image: mongo:latest
     ports:
       - ${MONGO_PORT}:${MONGO_PORT}
     volumes:
@@ -30,6 +30,10 @@ services:
       - ${API_PORT}:${API_PORT}
     volumes:
       - ./backend:/app
+      - ./backend/node_modules:/app/node_modules
     links:
       - mongo
-    command: npm run dev
+    command: sh -exec "npm install && npm run dev"
+
+volumes:
+  db:

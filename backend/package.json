@@ -1,13 +1,16 @@
 {
   "name": "backend_default",
   "version": "1.0.0",
-  "description": "Default Node + MongoDB API",
+  "description": "Node + MongoDB API",
   "author": "Dion Maicon E. Duarte <dionmaicon@outlook.com>",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node server.js",
-    "dev": "NODE_ENV=development nodemon -L server.js",
-    "start-gendoc": "node ./swagger.js"
+    "dev": "NODE_ENV=development nodemon -L server.js && npm run gendoc",
+    "gendoc": "node ./swagger.js",
+    "migrate:up": "node ./src/database/seed.js up",
+    "migrate:down": "node ./src/database/seed.js down"
   },
   "dependencies": {
     "body-parser": "^1.19.0",

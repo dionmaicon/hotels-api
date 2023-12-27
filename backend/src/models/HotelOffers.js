@@ -1,11 +1,15 @@
-const mongoose = require('mongoose');
-require('mongoose-long')(mongoose);
-const mongoosePaginate = require('mongoose-paginate-v2');
+import mongoose from 'mongoose';
+const { Schema, model } = mongoose;
 
-const { HotelSchema } = require('./Hotel.js');
-const { HotelOfferSchema } = require('./HotelOffer.js');
+import mongooseLong  from 'mongoose-long'
+mongooseLong(mongoose);
 
-const HotelOffersSchema = mongoose.Schema({
+import mongoosePaginate from 'mongoose-paginate-v2';
+
+import { OfferSchema } from './Offer.js';
+import { HotelSchema } from './Hotel.js';
+
+const HotelOffersSchema = Schema({
   type: {
     type: String,
     enum: ['hotel-offers']
@@ -14,7 +18,7 @@ const HotelOffersSchema = mongoose.Schema({
     type: HotelSchema,
     required: true
   },
-  offers: [HotelOfferSchema],
+  offers: [OfferSchema],
   self: {
     type: String
   }
@@ -34,6 +38,4 @@ HotelOffersSchema.set('toJSON', {
 
 HotelOffersSchema.plugin(mongoosePaginate);
 
-module.exports = {
-  HotelOffers: mongoose.model('HotelOffers', HotelOffersSchema, 'HotelOffers')
-}
+export const HotelOffers = model('HotelOffers', HotelOffersSchema, 'HotelOffers');

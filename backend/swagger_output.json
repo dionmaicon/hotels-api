@@ -70,18 +70,21 @@
             "in": "query"
           },
           {
-            "name": "size",
-            "description": "Size is quantity of items to show",
+            "name": "limit",
+            "description": "Limit is quantity of items to show",
             "type": "integer",
             "in": "query"
           }
         ],
         "responses": {
           "200": {
+            "description": "Hotel Offers founded.",
             "schema": {
               "$ref": "#/definitions/HotelOffers"
-            },
-            "description": "Hotel Offers founded."
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -90,8 +93,11 @@
           "Hotel Offers"
         ],
         "description": "Hotel Offers Create ",
-        "parameters": [],
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
       }
     },
     "/v1/hotel-offers/{id}": {
@@ -108,7 +114,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
       },
       "put": {
         "tags": [
@@ -123,7 +133,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
       },
       "delete": {
         "tags": [
@@ -138,28 +152,38 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
       }
     },
-    "/v1/hotel-offer/": {
+    "/v1/offers/": {
       "get": {
         "tags": [
           "Hotel Offer"
         ],
         "description": "Hotel Offer Get All Offer",
-        "parameters": [],
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
       },
       "post": {
         "tags": [
           "Hotel Offer"
         ],
         "description": "Hotel Offer Create ",
-        "parameters": [],
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
       }
     },
-    "/v1/hotel-offer/{id}": {
+    "/v1/offers/{id}": {
       "get": {
         "tags": [
           "Hotel Offer"
@@ -173,7 +197,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
       },
       "put": {
         "tags": [
@@ -188,7 +216,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
       },
       "delete": {
         "tags": [
@@ -203,28 +235,38 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
       }
     },
-    "/v1/hotel/": {
+    "/v1/hotels/": {
       "get": {
         "tags": [
           "Hotel"
         ],
         "description": "Hotel Get All",
-        "parameters": [],
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
       },
       "post": {
         "tags": [
           "Hotel"
         ],
         "description": "Hotel Create ",
-        "parameters": [],
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
       }
     },
-    "/v1/hotel/{id}": {
+    "/v1/hotels/{id}": {
       "get": {
         "tags": [
           "Hotel"
@@ -238,7 +280,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
       },
       "put": {
         "tags": [
@@ -253,7 +299,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
       },
       "delete": {
         "tags": [
@@ -268,7 +318,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
       }
     }
   },

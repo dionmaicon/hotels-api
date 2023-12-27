@@ -1,6 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const Controller = require("../controllers/HotelController.js");
+import { Router } from 'express';
+const router = Router();
+import Controller from "../controllers/HotelController.js";
 const hotelController = new Controller();
 
 router.get('/', (req, res) => {
@@ -34,4 +34,4 @@ router.delete('/:id', (req, res) => {
   hotelController.delete(req, res);
 });
 
-module.exports = router;
+export default router;

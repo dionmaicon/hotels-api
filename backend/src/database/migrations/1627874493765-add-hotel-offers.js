@@ -1,7 +1,7 @@
-const startDB = require("../../boot/database.js");
-const { HotelOffers } = require("../../models/HotelOffers.js");
-const { HotelOffer } = require("../../models/HotelOffer.js");
-const { Hotel } = require("../../models/Hotel.js");
+
+import { HotelOffers } from "../../models/HotelOffers.js";
+import { Offer } from "../../models/Offer.js";
+import { Hotel } from "../../models/Hotel.js";
 
 
 /**
@@ -9,18 +9,12 @@ const { Hotel } = require("../../models/Hotel.js");
  */
 async function up() {
 
-  // Write migration here
-  await startDB({
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  });
-
-  const offers = await HotelOffer.find();
+  const offers = await Offer.find();
   const hotels = await Hotel.find();
 
   const hotelOffers = [];
 
-  for (let index = 0; index < 4; index++) {
+  for (let index = 0; index < hotels.length; index++) {
     
     hotelOffers.push({
       type: "hotel-offers",
@@ -46,13 +40,9 @@ async function up() {
 async function down() {
 
   // Write migration here
-  await startDB({
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  });
 
   await HotelOffers.deleteMany({});
 
 }
 
-module.exports = { up, down };
+export { up, down };

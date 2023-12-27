@@ -1,13 +1,10 @@
-FROM node:14.17
+FROM node:20-alpine
 
-RUN mkdir -p /app
 WORKDIR /app
-
-COPY package.json /app
-COPY package-lock.json /app
-
-RUN npm install && npm install -g nodemon && npm install -g migrate-mongoose
 
 COPY . /app
 
-CMD ["nodemon", "/app/src/server.js"]
+RUN npm install -g nodemon
+RUN npm install 
+
+CMD ["node", "./src/server.js"]

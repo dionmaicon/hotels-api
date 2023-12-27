@@ -1,6 +1,6 @@
-const Dao = require('./Dao.js');
+import Dao from './Dao.js';
 
-class Service {
+class RestService {
 
     constructor(model) {
         this.dao = new Dao(model);
@@ -29,4 +29,4 @@ class Service {
 }
 
 
-module.exports = Service;
+export default RestService;

@@ -1,25 +1,30 @@
 'use strict';
 
-require('dotenv').config({
+import dotenv from 'dotenv'
+
+dotenv.config({
     path: process.env.NODE_ENV === "development" ? ".env.development" : ".env"
 });
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require("cors");
+import express from 'express';
 
-const config = require("./src/config");
+import pkg from 'body-parser';
+
+const {json } = pkg;
+import cors from "cors";
+
+import { port, host } from "./src/config/index.js";
 
 const app = express();
-app.use(bodyParser.json());
+app.use(json());
 app.use(cors());
 
-const endPoints = require("./src/routes/endPoints.js");
-const boot = require("./src/boot/index.js");
+import endPoints from "./src/routes/endPoints.js";
+import boot from "./src/boot/index.js";
 
 endPoints(app);
 boot(app);
 
-app.listen(config.port, config.host);
+app.listen(port, host);
 
-console.log(`Running on http://${config.host}:${config.port}`);
+console.log(`Running on http://${host}:${port}`);

@@ -1,6 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const Controller = require("../controllers/HotelOffersController.js");
+import { Router } from 'express';
+const router = Router();
+import Controller from "../controllers/HotelOffersController.js";
 const hotelOffersController = new Controller();
 
 router.get('/', (req, res) => {
@@ -36,8 +36,8 @@ router.get('/', (req, res) => {
          type: 'integer'
   } */
 
-  /* #swagger.parameters['size'] = {
-         description: 'Size is quantity of items to show',
+  /* #swagger.parameters['limit'] = {
+         description: 'Limit is quantity of items to show',
          type: 'integer'
   } */
 
@@ -73,4 +73,4 @@ router.delete('/:id', (req, res) => {
   hotelOffersController.delete(req, res);
 });
 
-module.exports = router;
+export default router;

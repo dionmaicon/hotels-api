@@ -1,7 +1,10 @@
-const mongoose = require('mongoose');
-require('mongoose-long')(mongoose);
+import mongoose from 'mongoose';
+const { Schema, model } = mongoose;
 
-const pointSchema = new mongoose.Schema({
+import mongooseLong  from 'mongoose-long'
+mongooseLong(mongoose);
+
+const pointSchema = new Schema({
     type: {
         type: String,
         enum: ['Point'],
@@ -13,7 +16,7 @@ const pointSchema = new mongoose.Schema({
     }
 });
 
-const HotelSchema = mongoose.Schema({
+const HotelSchema = Schema({
     type: {
         type: String,
         enum: ['hotel'],
@@ -52,7 +55,7 @@ const HotelSchema = mongoose.Schema({
                 validator: function (v) {
                     return /[a-zA-Z0-9-]{2,5}/.test(v);
                 },
-                message: props => `${props.value} is not a valid rating`
+                message: props => `${props.value} is not a valid language`
             },
         },
         text: {
@@ -95,8 +98,5 @@ HotelSchema.set('toJSON', {
         delete ret.__v;
     }
 });
-
-module.exports = {
-    HotelSchema,
-    Hotel: mongoose.model('Hotel', HotelSchema, 'Hotel')
-}
+const Hotel = model('Hotel', HotelSchema, 'Hotel') 
+export { HotelSchema, Hotel };

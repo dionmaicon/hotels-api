@@ -81,4 +81,4 @@ class Dao {
 
 }
 
-module.exports = Dao;
+export default Dao;

@@ -1,11 +1,14 @@
-const mongoose = require('mongoose');
-require('mongoose-long')(mongoose);
+import mongoose from 'mongoose';
+const { Schema, model } = mongoose;
 
-const HotelOfferSchema = mongoose.Schema({
+import mongooseLong  from 'mongoose-long'
+mongooseLong(mongoose);
+
+const OfferSchema = Schema({
     type: {
         type: String,
-        enum: ['hotel-offer'],
-        defautl: 'hotel-offer'
+        enum: ['reservation'],
+        defautl: 'reservation'
     },
     checkInDate: {
         type: Date,
@@ -37,9 +40,9 @@ const HotelOfferSchema = mongoose.Schema({
     timestamps: true
 });
 
-HotelOfferSchema.set('collection', 'HotelOffers');
+OfferSchema.set('collection', 'Offers');
 
-HotelOfferSchema.set('toJSON', {
+OfferSchema.set('toJSON', {
     transform: function (doc, ret, options) {
         ret.id = ret._id;
         delete ret._id;
@@ -47,8 +50,8 @@ HotelOfferSchema.set('toJSON', {
     }
 });
 
-
-module.exports = {
-    HotelOfferSchema,
-    HotelOffer: mongoose.model('HotelOffer', HotelOfferSchema, 'HotelOffer')
+const Offer = model('Offer', OfferSchema, 'Offer')
+export {
+    OfferSchema,
+    Offer
 }

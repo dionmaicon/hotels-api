@@ -1,4 +1,5 @@
-const swaggerAutogen = require('swagger-autogen')()
+import swaggerGen from 'swagger-autogen'
+const swaggerAutogen = swaggerGen();
 const outputFile = './swagger_output.json';
 const endpointsFiles = ['./src/routes/endPoints.js'];
 
@@ -70,7 +71,7 @@ const doc = {
     }
 }
 
-swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
-    require('./server.js');
-});
+swaggerAutogen(outputFile, endpointsFiles, doc).then()
 
+
+    

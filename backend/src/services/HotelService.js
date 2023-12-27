@@ -1,6 +1,10 @@
-const Service = require("./Service.js");
+import { Hotel } from "../models/Hotel.js";
+import RestService from "./RestService.js";
 
-class HotelService extends Service {
+class HotelService extends RestService {
+    constructor() {
+        super(Hotel)
+    }
  }
 
-module.exports = HotelService;
+export default HotelService;

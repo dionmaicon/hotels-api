@@ -1,10 +1,7 @@
-const Service = require("../services/HotelOfferService.js");
-const { HotelOffer } = require("../models/HotelOffer");
+class RestController {
 
-class HotelOfferController {
-
-  constructor() {
-    this.hotelOffer = new Service(HotelOffer);
+  constructor(service) {
+    this.service = service;
   }
 
   save(req, res) {
@@ -16,7 +13,7 @@ class HotelOfferController {
       });
     }
 
-    this.hotelOffer.save(req.body)
+    this.service.save(req.body)
       .then(response => {
 
         if (response.success === false) {
@@ -41,7 +38,7 @@ class HotelOfferController {
 
   getAll(req, res) {
 
-    this.hotelOffer.getAll()
+    this.service.getAll()
       .then(response => {
         res.status(200).send(response);
       }).catch(err => {
@@ -56,7 +53,7 @@ class HotelOfferController {
     
     let id = req.params.id;
 
-    this.hotelOffer.getOne(id).then(response => {
+    this.service.getOne(id).then(response => {
 
       if (response) {
         res.status(200).send(response);
@@ -79,13 +76,13 @@ class HotelOfferController {
     
     let id = req.params.id;
 
-    this.hotelOffer.update(id, req.body)
+    this.service.update(id, req.body)
       .then(response => {
 
         if (response) {
           res.status(200).send({
             success: true,
-            message: "Hotel Offers updated with success."
+            message: "Updated with success."
           });
         } else {
           res.status(404).send({
@@ -106,12 +103,12 @@ class HotelOfferController {
     
     let id = req.params.id;
 
-    this.hotelOffer.delete(id)
+    this.service.delete(id)
       .then(response => {
         if (response) {
           res.status(200).send({
             success: true,
-            message: "Hotel Offers deleted with success."
+            message: "Deleted with success."
           });
         } else {
           res.status(404).send({
@@ -128,4 +125,6 @@ class HotelOfferController {
   }
 }
 
-module.exports = HotelOfferController;
+export default RestController;
+
+
